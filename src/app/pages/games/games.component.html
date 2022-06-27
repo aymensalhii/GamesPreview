@@ -1,1 +1,57 @@
-<p>games works!</p>
+<div class="main-container">
+  <div class="header">
+    <div class="navbar">
+      <ul class="navbar-menu" id="myTopnav">
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('top')" [ngClass]="{'active': category == 'top'}">Top Games</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('new')" [ngClass]="{'active': category == 'new'}">New Games</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('slots')" [ngClass]="{'active': category == 'slots'}">Slots</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink">Jackpots</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('live')" [ngClass]="{'active': category == 'live'}">Live</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('blackjack')" [ngClass]="{'active': category == 'blackjack'}">Blackjack</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('roulette')" [ngClass]="{'active': category == 'roulette'}">Roulette</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('classic')" [ngClass]="{'active': category == 'classic'}">Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filter('poker')" [ngClass]="{'active': category == 'poker'}">Poker</a>
+        </li>
+        <li class="nav-item">
+          <a class="navlink" (click)="filterOther()" [ngClass]="{'active': category == 'other'}">Other</a>
+        </li>
+        <li class="toggle-item">
+          <button class="togglebtn" (click)="toggleMenu()">
+            <i class="bi bi-list" *ngIf="!toggled"></i>
+            <i class="bi bi-x-lg" *ngIf="toggled"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="games-container">
+    <div class="card" *ngFor="let game of filteredGames">
+      <div class="ribbon" *ngIf="game.categories?.includes('new') && category !== 'new'">
+        <span>New</span>
+      </div>
+      <div class="ribbon" *ngIf="game.categories?.includes('top') && category !== 'top' && category !== 'slots'">
+        <span>Top</span>
+      </div>
+      <app-game-item [game]="game"></app-game-item>
+    </div>
+  </div>
+
+</div>

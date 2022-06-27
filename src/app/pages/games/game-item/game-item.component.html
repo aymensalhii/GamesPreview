@@ -1,0 +1,10 @@
+<div class="card-body">
+  <div class="jackpot-box" *ngIf="JackpotExist">
+    <p>£ {{JackpotAmount}}</p>
+  </div>
+  <img src="{{game.image}}" alt="">
+  <div class="play-btn-box">
+    <p>{{game.name}}</p>
+    <button class="play-btn">Play</button>
+  </div>
+</div>
